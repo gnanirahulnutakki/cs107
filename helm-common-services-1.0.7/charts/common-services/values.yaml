@@ -14,7 +14,7 @@ ingress:
   #      - chart-example.local
 
 argo-cd:
-  enabled: true
+  enabled: false
   fullnameOverride: argocd
   configs:
     params:
@@ -40,7 +40,7 @@ argo-cd:
     keep: false
 
 prometheus:
-  enabled: true
+  enabled: false
   server:
     extraFlags:
       - web.enable-lifecycle
@@ -71,7 +71,7 @@ prometheus:
 
 grafana:
   fullnameOverride: grafana
-  enabled: true
+  enabled: false
   nodeSelector: {}
   # Persistence enabled by default
   persistence:
@@ -314,11 +314,11 @@ kibana:
 haproxy:
   enabled: true
   route:
-    argocd: true
-    grafana: true
+    argocd: false
+    grafana: false
     prometheus: false
     pushgateway: false
-    elasticsearch: false
+    elasticsearch: true
     kibana: true
     pgadmin4: false
     slamd: false
@@ -483,7 +483,7 @@ haproxy:
 
 
 postgresql:
-  enabled: true
+  enabled: false
   fullnameOverride: postgresql
   primary:
     nodeSelector: {}
@@ -510,7 +510,7 @@ postgresql:
     # latestBackupName: "postgresql-latest.sql.gz"
 
 pgadmin4:
-  enabled: true
+  enabled: false
   fullnameOverride: pgadmin4
   nodeSelector: {}
   persistentVolume:
@@ -524,7 +524,7 @@ zookeeper:
   nodeSelector: {}
 
 slamd:
-  enabled: true
+  enabled: false
   replicaCount: 1
   image:
     repository: pgodey/slamd
@@ -585,7 +585,7 @@ slamd:
     affinity: {}
 
 shellinabox:
-  enabled: true
+  enabled: false
   replicaCount: 1
   image:
     repository: sspreitzer/shellinabox
@@ -612,7 +612,7 @@ shellinabox:
   affinity: {}
 
 smtp:
-  enabled: true
+  enabled: false
   replicaCount: 1
   image:
     repository: bytemark/smtp
